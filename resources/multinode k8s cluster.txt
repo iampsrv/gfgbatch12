@@ -1,0 +1,34 @@
+minikube delete --purge
+
+minikube start --nodes 2 --driver=hyperv
+kubectl describe node minikube
+minikube node list
+minikube node add
+minikube node delete minikube-m04
+
+
+kubectl create deployment demo --image=nginx --replicas=6
+kubectl get pod -o wide
+
+minikube node stop minikube-m03
+kubectl get pod -o wide
+
+minikube node start minikube-m03
+kubectl create deployment demo1 --image=nginx --replicas=6
+kubectl get pod -o wide
+
+kubectl cordon: Mark node as unschedulable
+kubectl cordon minikube-m02
+kubectl cordon minikube-m03
+
+kubectl uncordon: Mark node as schedulable
+kubectl uncordon minikube-m02
+kubectl uncordon minikube-m03
+
+kubectl get nodes (To check the status of cordon)
+
+To balance the no of pods
+kubectl drain minikube-m02 minikube-m03 minikube --ignore-daemonsets
+kubectl uncordon minikube-m02 minikube-m03
+
+

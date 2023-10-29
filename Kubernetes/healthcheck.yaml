@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myfirstdeployment
+  labels:
+    app: myflaskapp
+  namespace: batchtwelvens
+spec:
+  template:
+    metadata:
+      name: myfirstpod
+      labels:
+        app: myflaskapp
+    spec:
+      containers:
+      - name: myfirstpod
+        image: psrv3/cicdbatch12
+        ports:
+        - containerPort: 5001
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 5001
+          initialDelaySeconds: 1
+          periodSeconds: 1
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 5001
+          initialDelaySeconds: 30
+          periodSeconds: 30
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myflaskapp

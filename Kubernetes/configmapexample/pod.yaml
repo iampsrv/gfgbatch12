@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myfirstpod
+  labels:
+    app: myflaskapp
+spec:
+  containers:
+    - name: myfirstpod
+      image: psrv3/configmapexample
+      ports:
+        - containerPort: 5001
+      envFrom:
+        - name: Config_key
+          valueFrom:
+            configMapRef:
+              name: my-flask-config

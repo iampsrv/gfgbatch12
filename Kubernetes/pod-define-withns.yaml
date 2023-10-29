@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myfirstpoddejkjelkedsj
+  labels:
+    app: myflaskapp
+  namespace: batchtwelvens
+spec:
+  containers:
+  - name: myfirstpod
+    image: psrv3/cicdbatch12
+    ports:
+    - containerPort: 5001
