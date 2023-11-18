@@ -1,0 +1,12 @@
+Liveness Probe:
+
+Purpose: Liveness probes are used to determine whether a container should be restarted or terminated if it becomes unhealthy during its runtime.
+Behavior: When a liveness probe fails, Kubernetes will restart the container. This is useful for recovering from situations where a container becomes stuck or unresponsive, such as application crashes or deadlocks.
+Use Case: Liveness probes are typically used to ensure the continuous availability of the application by restarting containers that are in a bad state.
+
+
+Readiness Probe:
+
+Purpose: Readiness probes are used to determine whether a container is ready to serve traffic. They are used to control when a pod can start receiving traffic from a service or load balancer.
+Behavior: If a readiness probe fails, the container remains in the "Not Ready" state, and Kubernetes won't send traffic to it. Once the probe succeeds, the container is considered "Ready," and traffic can be directed to it.
+Use Case: Readiness probes are useful when you want to ensure that a pod is fully initialized and the application inside the container is ready to handle incoming requests before sending traffic to it.

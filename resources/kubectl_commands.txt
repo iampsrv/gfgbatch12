@@ -1,0 +1,2 @@
+kubectl port-forward deployment/my-deployment 9090:8080
+kubectl proxy (http://localhost:8001/,http://localhost:8001/api/v1/,http://localhost:8001/api/v1/namespaces/default/services/<service-name>:<port-name>/proxy/,http://localhost:8001/api/v1/namespaces/default/services/<service-name>:<port-name>/proxy/)
